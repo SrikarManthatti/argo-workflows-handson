@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Workflow 
+metadata:
+  generateName: first-argo-wf-
+spec:
+  entrypoint: whalesay
+  templates:
+    - name: whalesay
+      container:
+        image: docker/whalesay
+        command: [cowsay]
+        args: ['Hello word']
+        resources:
+          limits:
+            memory: 32Mi
+            cpu: 100m
+
+
+
